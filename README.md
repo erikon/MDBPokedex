@@ -11,4 +11,10 @@ The core concepts used in this application include the following:
  - Drawer View
  - Model Classes
  
- 
+![screenshot_20170327-191137](https://cloud.githubusercontent.com/assets/5530931/24381999/8e820932-1321-11e7-80e7-b06c672bcb12.png)
+
+![screenshot_20170327-191141](https://cloud.githubusercontent.com/assets/5530931/24382002/93031e56-1321-11e7-832e-b6b95208067e.png)
+
+![screenshot_20170327-191146](https://cloud.githubusercontent.com/assets/5530931/24382004/97b0bfc6-1321-11e7-9bc4-4fc0343eaeb4.png)
+
+![screenshot_20170327-191156](https://cloud.githubusercontent.com/assets/5530931/24382007/9a455486-1321-11e7-853b-4912b82b894a.png)
