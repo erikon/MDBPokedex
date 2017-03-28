@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item android:id="@+id/action_search"
+        android:title="Search Bar"
+        android:icon="@drawable/ic_visibility_black_24dp"
+        app:showAsAction="always"
+        app:actionViewClass="android.support.v7.widget.SearchView" />
+    <item
+        android:id="@+id/action_gridView"
+        android:icon="@drawable/ic_view_module_black_24dp"
+        android:title="Grid View"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/action_filterView"
+        android:icon="@drawable/ic_add_black_24dp"
+        android:title="Filter View"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/action_slide"
+        android:icon="@drawable/ic_view_headline_black_24dp"
+        android:title="Slide View"
+        app:showAsAction="always" />
+
+
+
+
+</menu>

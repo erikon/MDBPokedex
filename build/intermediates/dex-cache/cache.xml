@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="true"
+        jar="/home/eric/Documents/Berkeley/MDB/Submissions/MDBPokedex/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="c82741bc129dd5f99f11a4ab8666ae24262053b6">
+        <dex dex="/home/eric/Documents/Berkeley/MDB/Submissions/MDBPokedex/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_62537a21771d04c6b68e093f306ac001b349cd2d/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/eric/Documents/Berkeley/MDB/Projects/MDBPokedex/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="c82741bc129dd5f99f11a4ab8666ae24262053b6">
+        <dex dex="/home/eric/Documents/Berkeley/MDB/Projects/MDBPokedex/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_3aa56a6818a39129396c7d7d09ae91ccc74858b3/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/eric/.android/build-cache/70fb37a8650f141bff66e7bcdc28f17b34f46e0d/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="0fb891e8f0cfba0513043a7bb357513d229ca2cd">
+        <dex dex="/home/eric/Documents/Berkeley/MDB/Projects/MDBPokedex/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_9fb3956cc9bbcf00adeb8310ff64d6ac3ec4739d/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/eric/.android/build-cache/a9b7e90cad406e1e805f4d09c3c3c9cf37a4890d/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="ecb496cc08dd52551fc5ec6db3bc0632e95a89bb">
+        <dex dex="/home/eric/Documents/Berkeley/MDB/Projects/MDBPokedex/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_13c886c4b11b66d0f7891d862543175bbcc8c3f2/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/eric/.android/build-cache/0f90f7e032ecb33a0430f07fb20b164a2c551de7/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="02741d05d4b697fba5e279e9881aaa1da0ca7c7f">
+        <dex dex="/home/eric/Documents/Berkeley/MDB/Projects/MDBPokedex/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_a5d1448d10e3505869129fa6259cc8cf29f95f37/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/eric/.android/build-cache/c09e708b341e19b21ae0de2bc4e657c121327330/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="0d191c1a09e4892d059e5ce749e4ad4e08129e35">
+        <dex dex="/home/eric/Documents/Berkeley/MDB/Projects/MDBPokedex/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_024fea11b9cb3c64fe44b3b31ae7de0d8fa3fac9/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/eric/Documents/Berkeley/MDB/Projects/MDBPokedex/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="47be674a55cda7395091a7165089baa3fe3e4b83">
+        <dex dex="/home/eric/Documents/Berkeley/MDB/Projects/MDBPokedex/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_894f2671ea8dbf2b1321d47c8c2851f5e051385d/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/eric/.android/build-cache/9d590ff3bc0b44056b10e1913bb252362986799f/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="c9649557905bf7a80fca9e0d54cbcb7662627860">
+        <dex dex="/home/eric/Documents/Berkeley/MDB/Projects/MDBPokedex/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_3bf0cb4840b703b0097fcc03cad185c7a4f3f2eb/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/eric/.android/build-cache/f09ef921ca6be7d21bdc62ee48fb5e7a1000846b/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="1e4e400603780c5d414531d26bce6eacca94c86e">
+        <dex dex="/home/eric/Documents/Berkeley/MDB/Projects/MDBPokedex/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_83d68d4917d3222dbe68ee28a8cf1e213fd424ec/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/eric/.gradle/caches/modules-2/files-2.1/com.github.bumptech.glide/glide/3.7.0/9e9eeaf9948ee4d6c3ab354e8dc14368f16994a4/glide-3.7.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="9e9eeaf9948ee4d6c3ab354e8dc14368f16994a4">
+        <dex dex="/home/eric/Documents/Berkeley/MDB/Projects/MDBPokedex/app/build/intermediates/transforms/dex/debug/folders/1000/10/glide-3.7.0_d038f57d2566d8b5760a46bad2db412585d2b1f1/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/eric/.android/build-cache/42852cf1c099d2834fea7cf657e216f3d5c234d7/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="e2719c102dca3a7a5b02ce07f769362da6ddb4ab">
+        <dex dex="/home/eric/Documents/Berkeley/MDB/Projects/MDBPokedex/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_18a1b97180c29a6dfa722aedd90abe37b9c99806/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/eric/.android/build-cache/3288c43fcd1c9ad6e413544d5f95e2e5de268c90/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="7bde4c34162092e0a77e7f12dc85ed77c484cf5c">
+        <dex dex="/home/eric/Documents/Berkeley/MDB/Projects/MDBPokedex/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_42f121e9cac16fd3ee093c0cc8fa3ea29475d157/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/eric/.android/build-cache/295451127af51e96a07463f76ce4e2988a8eb7d3/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
+        <dex dex="/home/eric/Documents/Berkeley/MDB/Projects/MDBPokedex/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_ce934c3aab6a2c84b1add8e9dd3fe2ea2ca562cf/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/eric/.android/build-cache/9cd574873d034f9f1facdf7a6f2a361a16dc14da/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="c03bf57f358aa10d253f21989e93bcf6014b3b17">
+        <dex dex="/home/eric/Documents/Berkeley/MDB/Projects/MDBPokedex/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_8909352e6fa81918be736d8ed13f87755a328242/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/eric/.android/build-cache/cad24a795a362f1463b26b4735ee845b00c6923d/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="a8ae156c2726ac9c56daaf4b49452ec2cdb7bba9">
+        <dex dex="/home/eric/Documents/Berkeley/MDB/Projects/MDBPokedex/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_2767dd93d1858e253dfeb84810a51e1ae11ebc94/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/eric/.android/build-cache/72f4a8d47e3f851a8a554c90788e5411492d4edb/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="3e04ac8ca644ea7baddf6fdcf72e15c79e9df94a">
+        <dex dex="/home/eric/Documents/Berkeley/MDB/Projects/MDBPokedex/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_11d4915aed3277493c99bb35de3ec31f26e9d9b1/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/eric/Documents/Berkeley/MDB/Submissions/MDBPokedex/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="1669e2ec58245a9675e138718f5b5bdbb38bd9d9">
+        <dex dex="/home/eric/Documents/Berkeley/MDB/Submissions/MDBPokedex/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_350b3d7616e87fd4bd9b564fce15776eaed820d1/classes.dex" />
+    </item>
+
+</items>
