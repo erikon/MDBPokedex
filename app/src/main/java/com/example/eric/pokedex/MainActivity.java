@@ -4,6 +4,7 @@ import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
+import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
@@ -13,6 +14,7 @@ import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.util.SparseBooleanArray;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -26,10 +28,10 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
-
 public class MainActivity extends AppCompatActivity implements SearchView.OnQueryTextListener{
 
     RecyclerView recyclerView;
+    DrawerLayout drawerLayout;
     PokedexAdapter pokedexAdapter;
     ArrayList<Pokedex.Pokemon> copyPokemons;
     ArrayList<Pokedex.Pokemon> filteredModelListType = new ArrayList<>();
@@ -38,8 +40,8 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
     boolean isGridView = false;
     private List<Pokedex.Pokemon> mModels = new ArrayList<>();
     private String[] typeArray = {"Clear Filter", "Normal", "Fire", "Water", "Fighting", "Flying", "Grass", "Poison", "Electric", "Ground", "Psychic", "Rock", "Ice", "Bug", "Dragon", "Ghost", "Dark", "Steel", "Fairy"};
-    private ListView mDrawerList;
-    private ArrayAdapter<String> mAdapter;
+    private ListView typerDrawer;
+    private ArrayAdapter<String> typeAdapter;
     static int minHp = 0, minAttack = 0, minDefense = 0, random, code;
 
     @Override
@@ -47,42 +49,44 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        pokedex = new Pokedex();
+
         recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
         Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
         setSupportActionBar(myToolbar);
 
-        mDrawerList = (ListView) findViewById(R.id.navList);
-        mAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, typeArray);
-        mDrawerList.setAdapter(mAdapter);
+        drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+        typerDrawer = (ListView) findViewById(R.id.navList);
+        typeAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, typeArray);
+        typerDrawer.setAdapter(typeAdapter);
 
-
-        mDrawerList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        typerDrawer.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                SparseBooleanArray clickedItemPositions = mDrawerList.getCheckedItemPositions();
+                SparseBooleanArray clickedItemPositions = typerDrawer.getCheckedItemPositions();
                 mSelectedItem = i;
-                mAdapter.notifyDataSetChanged();
+                typeAdapter.notifyDataSetChanged();
 
                 for(int j = 0;j < clickedItemPositions.size(); j ++){
                     boolean checked = clickedItemPositions.valueAt(j);
 
                     if(checked){
                         int key = clickedItemPositions.keyAt(j);
-                        String item = (String) mDrawerList.getItemAtPosition(key);
+                        String item = (String) typerDrawer.getItemAtPosition(key);
 
                         if (item.equalsIgnoreCase("Clear Filter")){
                             for (int k = 0; k < clickedItemPositions.size(); k++){
-                                mDrawerList.getChildAt(k).setBackgroundColor(Color.WHITE);
+                                typerDrawer.getChildAt(k).setBackgroundColor(Color.WHITE);
                             }
-                            mDrawerList.setAdapter(mAdapter);
+                            typerDrawer.setAdapter(typeAdapter);
                             pokedexAdapter.pokemons = copyPokemons;
-                            recyclerView.setAdapter(pokedexAdapter);
+                            pokedexAdapter.notifyDataSetChanged();
                             filteredModelListType.clear();
 
                         } else {
                             try {
                                 boolean isInList = false;
-                                mDrawerList.getChildAt(key).setBackgroundColor(Color.LTGRAY);
+                                typerDrawer.getChildAt(key).setBackgroundColor(Color.LTGRAY);
                                 ArrayList<Pokedex.Pokemon> intermediateAdd = filterType(mModels, item);
                                 for (int k = 0; k < intermediateAdd.size(); k++){
                                     Pokedex.Pokemon pokemon = intermediateAdd.get(k);
@@ -97,11 +101,10 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
                                     isInList = false;
                                 }
                                 pokedexAdapter.pokemons = filteredModelListType;
-                                recyclerView.setAdapter(pokedexAdapter);
+                                pokedexAdapter.notifyDataSetChanged();
                                 recyclerView.scrollToPosition(0);
-                                Log.i("Type ", item);
                             } catch (Exception e){
-                                Log.i("List Count", Integer.toString(mDrawerList.getAdapter().getCount()));
+
                             }
 
 
@@ -111,9 +114,6 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
                 }
             }
         });
-
-
-        pokedex = new Pokedex();
 
         recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
 
@@ -137,20 +137,20 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
     }
 
     public void filterReturn(){
-        if (code == 1) {
+        if (code == Utils.FILTER_STATS_CONSTANT) {
             int[]stats = new int[3];
             stats[0] = minHp;
             stats[1] = minAttack;
             stats[2] = minDefense;
             ArrayList<Pokedex.Pokemon> filteredModelList = filterStats(mModels, stats);
             pokedexAdapter.pokemons = filteredModelList;
-            recyclerView.setAdapter(pokedexAdapter);
+            pokedexAdapter.notifyDataSetChanged();
             this.recyclerView.scrollToPosition(0);
 
-        } else if (code == 2){
+        } else if (code == Utils.FILTER_RANDOM_CONSTANT){
             ArrayList<Pokedex.Pokemon> filteredModelList = filterRandom(mModels, random);
             pokedexAdapter.pokemons = filteredModelList;
-            recyclerView.setAdapter(pokedexAdapter);
+            pokedexAdapter.notifyDataSetChanged();
             this.recyclerView.scrollToPosition(0);
         }
 
@@ -170,18 +170,18 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
 
     @Override
     public boolean onQueryTextChange(String query){
-        try {
+        try {           // If statement checking classname fails
             int x = Integer.parseInt(query);
             final ArrayList<Pokedex.Pokemon> filteredModelList = filterNum(mModels, x);
             pokedexAdapter.pokemons = filteredModelList;
-            recyclerView.setAdapter(pokedexAdapter);
+            pokedexAdapter.notifyDataSetChanged();
             this.recyclerView.scrollToPosition(0);
             return true;
 
-        } catch (Throwable e) {
+        } catch (Throwable e) {     // Crashes on ClassCastException
             final ArrayList<Pokedex.Pokemon> filteredModelList = filterName(mModels, query);
             pokedexAdapter.pokemons = filteredModelList;
-            recyclerView.setAdapter(pokedexAdapter);
+            pokedexAdapter.notifyDataSetChanged();
             this.recyclerView.scrollToPosition(0);
             return true;
         }
@@ -198,7 +198,7 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
         final ArrayList<Pokedex.Pokemon> filteredModelList = new ArrayList<>();
         for (Pokedex.Pokemon model : models) {
             final String text = model.name.toLowerCase();
-            if (text.contains(lowerCaseQuery)) {
+            if (text.startsWith(lowerCaseQuery)) {
                 filteredModelList.add(model);
             }
         }
@@ -210,7 +210,7 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
         final ArrayList<Pokedex.Pokemon> filteredModelList = new ArrayList<>();
         for (Pokedex.Pokemon model : models) {
             final String text = model.number;
-            if (text.contains(numberString)) {
+            if (text.startsWith(numberString)) {
                 filteredModelList.add(model);
             }
         }
@@ -265,12 +265,12 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
             case R.id.action_gridView:
                 if (!isGridView){
                     recyclerView.setLayoutManager(new GridLayoutManager(getApplicationContext(), 3));
-                    recyclerView.setAdapter(pokedexAdapter);
+                    pokedexAdapter.notifyDataSetChanged();
                     isGridView = true;
 
                 } else {
                     recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
-                    recyclerView.setAdapter(pokedexAdapter);
+                    pokedexAdapter.notifyDataSetChanged();
                     isGridView = false;
                 }
                 return true;
@@ -279,8 +279,11 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
             case R.id.action_filterView:
                 Intent intent = new Intent(getApplicationContext(), FilterActivity.class);
                 Pokedex.Pokemon single_poke = filterRandom(mModels, 1).get(0);
-                intent.putExtra("rand_poke", single_poke.name);
+                intent.putExtra(getString(R.string.rand_poke), single_poke.name);
                 startActivity(intent);
+            case R.id.action_slide:
+                drawerLayout.openDrawer(Gravity.LEFT);
+                return true;
             default:
                 return super.onOptionsItemSelected(item);
 

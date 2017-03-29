@@ -50,15 +50,8 @@ public class PokemonActivity extends AppCompatActivity {
         }
 
         String url = "http://img.pokemondb.net/artwork/" + name.toLowerCase() + ".jpg";
-        Glide.with(getApplicationContext()).load(url).into(pokeImage);
 
-        if (name.equalsIgnoreCase("Flabébé")){
-            Glide.with(getApplicationContext()).load("http://img.pokemondb.net/artwork/flabebe.jpg").into(pokeImage);
-        } else if (name.equalsIgnoreCase("Farfetch'd")){
-            Glide.with(getApplicationContext()).load("http://img.pokemondb.net/artwork/farfetchd.jpg").into(pokeImage);
-        } else {
-            Glide.with(getApplicationContext()).load(url).into(pokeImage);
-        }
+        Utils.loadImage(getApplicationContext(), url, name, pokeImage);
 
         pokeName.setText(name);
         pokeNumber.setText("# "  +number);

@@ -2,9 +2,13 @@ package com.example.eric.pokedex;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.drawable.Drawable;
+import android.os.AsyncTask;
 import android.support.v7.util.SortedList;
 import android.support.v7.widget.RecyclerView;
+import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +17,8 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 
+import java.io.InputStream;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
@@ -78,21 +84,71 @@ public class PokedexAdapter extends RecyclerView.Adapter<PokedexAdapter.CustomVi
     }
 
     @Override
-    public void onBindViewHolder(PokedexAdapter.CustomViewHolder holder, int position) {
+    public void onBindViewHolder(final PokedexAdapter.CustomViewHolder holder, int position) {
         final Pokedex.Pokemon poke = pokemons.get(position);
 
+//        class DownloadFilesTask extends AsyncTask<String, Void, Bitmap> {
+//            protected Bitmap doInBackground(String... strings) {
+//                try {
+//                    return Glide.
+//                            with(context).
+//                            load(strings[0]).
+//                            asBitmap().
+//                            into(100, 100). // Width and height
+//                            get();
+//                }
+//                catch (Exception e) {
+//                    return null;
+//                }
+//            }
+//
+//            protected void onProgressUpdate(Void... progress) {}
+//
+//            protected void onPostExecute(Bitmap result) {
+//                holder.pokemonImage.setImageBitmap(result);
+//            }
+//        }
+
+        AsyncTask<Void, Void, Bitmap> asyncTask = new AsyncTask<Void, Void, Bitmap>() {
+            @Override
+            protected Bitmap doInBackground(Void... params) {
+//                Display display = getWindowManager().getDefaultDisplay();
+                int width = 100;
+                int height = 100;
+                Bitmap bit = null;
+                try {
+                    String url = "http://img.pokemondb.net/artwork/" + poke.name.toLowerCase() + ".jpg";
+                    if (poke.name.equalsIgnoreCase("Flabébé")){
+//                        Glide.with(context).load("http://img.pokemondb.net/artwork/flabebe.jpg").into(holder.pokemonImage);
+//                        new DownloadFilesTask().execute("http://img.pokemondb.net/artwork/flabebe.jpg");
+                        bit = BitmapFactory.decodeStream((InputStream) new URL("http://img.pokemondb.net/artwork/flabebe.jpg").getContent());
+
+                    } else if (poke.name.equalsIgnoreCase("Farfetch'd")){
+//                        Glide.with(context).load("http://img.pokemondb.net/artwork/farfetchd.jpg").into(holder.pokemonImage);
+//                        new DownloadFilesTask().execute("http://img.pokemondb.net/artwork/farfetchd.jpg");
+                        bit = BitmapFactory.decodeStream((InputStream) new URL("http://img.pokemondb.net/artwork/farfetchd.jpg").getContent());
+
+                    } else {
+//                        Glide.with(context).load(url).into(holder.pokemonImage);
+//                        new DownloadFilesTask().execute(url);
+                        bit = BitmapFactory.decodeStream((InputStream) new URL(url).getContent());
+
+                    }
+                } catch (Exception e) {}
+                Bitmap sc = Bitmap.createScaledBitmap(bit,width,height,true);
+                return sc;
+            }
+
+            @Override
+            protected void onPostExecute(Bitmap bitmap) {
+                super.onPostExecute(bitmap);
+                holder.pokemonImage.setImageBitmap(bitmap);
+            }
+        };
+
+        asyncTask.execute();
+
         holder.pokemonName.setText(poke.name);
-
-        String url = "http://img.pokemondb.net/artwork/" + poke.name.toLowerCase() + ".jpg";
-        if (poke.name.equalsIgnoreCase("Flabébé")){
-            Glide.with(context).load("http://img.pokemondb.net/artwork/flabebe.jpg").into(holder.pokemonImage);
-
-        } else if (poke.name.equalsIgnoreCase("Farfetch'd")){
-            Glide.with(context).load("http://img.pokemondb.net/artwork/farfetchd.jpg").into(holder.pokemonImage);
-
-        } else {
-            Glide.with(context).load(url).into(holder.pokemonImage);
-        }
 
         holder.pokemonImage.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -108,7 +164,6 @@ public class PokedexAdapter extends RecyclerView.Adapter<PokedexAdapter.CustomVi
                 context.startActivity(intent);
             }
         });
-
     }
 
     @Override
@@ -153,9 +208,6 @@ public class PokedexAdapter extends RecyclerView.Adapter<PokedexAdapter.CustomVi
         for (int i = 0; i < mSortedList.size(); i++) {
             pokemons.add(i, mSortedList.get(i));
         }
-
-
-
     }
 
     public class CustomViewHolder extends RecyclerView.ViewHolder {
@@ -169,7 +221,6 @@ public class PokedexAdapter extends RecyclerView.Adapter<PokedexAdapter.CustomVi
             pokemonName = (TextView) view.findViewById(R.id.pokemonName);
             pokemonImage = (ImageView) view.findViewById(R.id.pokemonImage);
         }
-
     }
 }
 

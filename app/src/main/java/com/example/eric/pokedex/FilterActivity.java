@@ -39,25 +39,16 @@ public class FilterActivity extends AppCompatActivity {
 
         String url = "http://img.pokemondb.net/artwork/" + rand_poke_name.toLowerCase() + ".jpg";
 
-        if (rand_poke_name.equalsIgnoreCase("Flabébé")){
-            Glide.with(getApplicationContext()).load("http://img.pokemondb.net/artwork/flabebe.jpg").into(randomPoke);
-
-        } else if (rand_poke_name.equalsIgnoreCase("Farfetch'd")){
-            Glide.with(getApplicationContext()).load("http://img.pokemondb.net/artwork/farfetchd.jpg").into(randomPoke);
-
-        } else {
-            Glide.with(getApplicationContext()).load(url).into(randomPoke);
-        }
-
+        Utils.loadImage(getApplicationContext(), url, rand_poke_name, randomPoke);
 
         filterButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                MainActivity.minHp = Integer.parseInt(minHp.getText().toString());
+                MainActivity.minHp  = Integer.parseInt(minHp.getText().toString());
                 MainActivity.minAttack = Integer.parseInt(minAttack.getText().toString());
                 MainActivity.minDefense = Integer.parseInt(minDefense.getText().toString());
-                MainActivity.code = 1;
+                MainActivity.code = Utils.FILTER_STATS_CONSTANT;
                 startActivity(intent);
             }
         });
@@ -66,7 +57,7 @@ public class FilterActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                MainActivity.code = 2;
+                MainActivity.code = Utils.FILTER_RANDOM_CONSTANT;
                 MainActivity.random = 20;
                 startActivity(intent);
             }
